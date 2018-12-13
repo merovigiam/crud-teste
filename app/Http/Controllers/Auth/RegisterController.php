@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
+use Psy\Util\Json;
+
 
 class RegisterController extends Controller
 {
@@ -28,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,11 +53,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
+        return User::CriarValidador($data);
+    }
+
+    public function telaLogin()
+    {
+        return view('cadastro/login');
     }
 
     /**
@@ -63,10 +69,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return User::CriarUsuario($data);
     }
+
+    protected function criarTelaCadastro()
+    {
+        return view('cadastro/cadastro');
+    }
+
+    public function criarUsuario(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect('/cadastro')
+                ->withErrors($validator)
+                ->withInput($request->all);
+        }
+        else {
+            $user = $this->create($request->all());
+            Auth::login($user);
+        }
+        return redirect('/');
+    }
+
+
+
 }
