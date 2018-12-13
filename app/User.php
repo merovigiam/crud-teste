@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
@@ -30,14 +29,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function criarUsuario($data)
-    {
-        User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-        ]);
-    }
 
     public static function criarValidador(array $data)
     {
