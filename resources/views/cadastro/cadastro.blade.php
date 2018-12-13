@@ -25,7 +25,7 @@
                        class="form-control" placeholder="Senha" aria-describedby="defaultRegisterFormPasswordHelpBlock"
                        value="{{ old('password') }}">
                 <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                    A senha deve conter no mínimo 8 characteres e 1 digito
+                    A senha deve conter no mínimo 8 characteres
                 </small>
                 <button class="btn btn-info my-4 btn-block" type="submit">Cadastrar</button>
                 <p>Já é cadastrado?
