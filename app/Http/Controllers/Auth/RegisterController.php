@@ -53,7 +53,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return User::CriarValidador($data);
+        return User::criarValidador($data);
     }
 
     public function telaLogin()
@@ -69,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::CriarUsuario($data);
+        return User::criarUsuario($data);
     }
 
     protected function criarTelaCadastro()
