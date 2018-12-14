@@ -41,6 +41,9 @@
             <li class="nav-item">
                 <a class="nav-link"><i class="fa fa-instagram"></i></a>
             </li>
+            <li class="nav-item">
+                <a href="https://github.com/merovigiam/crud-teste" class="nav-link"><i class="fa fa-github"></i></a>
+            </li>
         </ul>
     </div>
 </nav>
