@@ -28,14 +28,24 @@ class Filme extends Model
 
     public static function votarEmFilme($id)
     {
-        $filmeAlvo = Filme::find($id);
-        $filmeAlvo->votos++;
-        $filmeAlvo->save();
+        try {
+            $filmeAlvo = Filme::find($id);
+            $filmeAlvo->votos++;
+            return $filmeAlvo->save();
+        }
+        catch(\Exception $ex) {
+            return false;
+        }
     }
 
     public static function deletarFilme($id)
     {
-        Filme::where('id',$id)->delete();
+        try {
+            return Filme::where('id',$id)->delete();
+        }
+        catch(\Exception $ex) {
+            return false;
+        }
     }
 
     public static function listarFilmesByRank()

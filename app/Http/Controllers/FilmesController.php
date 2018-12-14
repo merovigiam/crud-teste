@@ -28,7 +28,10 @@ class FilmesController extends Controller
     public function votarFilme($id)
     {
         if(isset($id)) {
-            Filme::votarEmFilme($id);
+            if(!Filme::votarEmFilme($id))
+            {
+                return redirect('/');
+            }
         }
         return redirect('/topfilmes');
     }
@@ -36,7 +39,10 @@ class FilmesController extends Controller
     public function deletarFilme($id)
     {
         if(isset($id)) {
-            Filme::deletarFilme($id);
+            if(!Filme::deletarFilme($id))
+            {
+                return redirect('/');
+            }
         }
         return redirect('/topfilmes');
     }
