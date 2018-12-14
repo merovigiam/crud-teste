@@ -13,8 +13,12 @@
             </li>
             @if( auth()->check() )
                 <li class="nav-item">
-                    <a class="nav-link" href="/atualizar">{{ auth()->user()->name }}</a>
+                    <a class="nav-link" href="/topfilmes">Top Filmes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/atualizar"><i class="fa fa-user-circle-o"></i> {{ auth()->user()->name }}</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Sair</a>
                 </li>
