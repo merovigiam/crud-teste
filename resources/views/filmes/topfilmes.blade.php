@@ -4,7 +4,7 @@
         <div class="content">
             <h1>Top list</h1>
             <div>
-                <button data-toggle="collapse" data-target="#adicionarFilme" aria-expanded="false" aria-controls="adicionarFilme">Adicionar Filme</button>
+                <button class="btn btn-primary" data-toggle="collapse" data-target="#adicionarFilme" aria-expanded="false" aria-controls="adicionarFilme">Adicionar Filme</button>
             </div>
 
 
@@ -20,7 +20,7 @@
     </form>
     <br>
 </div>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th scope="col">Rank</th>
@@ -37,8 +37,8 @@
                 <th scope="row">{{ $rank+1 }}</th>
                 <td>{{ $filme->nome }}</td>
                 <td>{{ $filme->votos }}</td>
-                <td><button><a href="/votar/{{ $filme->id }}">Votar</a></button></td>
-                <td><button><a href="/deletar/{{ $filme->id }}">Remover</a></button></td>
+                <td><button class="btn-flat btn-info"><a href="/votar/{{ $filme->id }}">Votar</a></button></td>
+                <td><button class="btn-flat btn-danger"><a href="/deletar/{{ $filme->id }}">Remover</a></button></td>
             </tr>
         @endforeach
         </tbody>
